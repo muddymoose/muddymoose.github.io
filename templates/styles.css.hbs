@@ -1,48 +1,48 @@
-/* AUTO-GENERATED from content.yaml. Do not edit directly — edit content.yaml and run `pnpm run build`. */
 :root {
-  --fire: #d97700;
-  --ember: #e86b1a;
-  --cream: #faf3e4;
-  --slate: #2e3f3c;
-  --forest: #6b7a5e;
-  --bark: #5a3e10;
-  --wheat: #e8c97a;
-  --smoke: #f5edd8;
-  --card-bg: #f5edd8;
+  --fire: {{theme.light.fire}};
+  --ember: {{theme.light.ember}};
+  --cream: {{theme.light.cream}};
+  --slate: {{theme.light.slate}};
+  --forest: {{theme.light.forest}};
+  --bark: {{theme.light.bark}};
+  --wheat: {{theme.light.wheat}};
+  --smoke: {{theme.light.smoke}};
+  --card-bg: {{theme.light.smoke}};
   --card-featured-bg: #fdf6e8;
   --input-bg: var(--smoke);
-  --input-border: rgb(46, 63, 60, 0.2);
-  --body-gradient-a: rgb(217, 119, 0, 0.06);
-  --body-gradient-b: rgb(46, 63, 60, 0.07);
+  --input-border: {{rgba theme.light.slate 0.2}};
+  --body-gradient-a: {{rgba theme.light.fire 0.06}};
+  --body-gradient-b: {{rgba theme.light.slate 0.07}};
   --qty-bg: white;
   --error-color: #c0392b;
-  --surface-dark: #2e3f3c;
+  --surface-dark: {{theme.light.surface_dark}};
   --text-on-dark: #faf3e4;
   --text-on-light: #000;
-  --special-from: #5c2d4a;
-  --special-to: #7a3d60;
-  --special-accent: #f0c9d8;
-  --special-accent-30: rgb(240, 201, 216, 0.3);
-  --special-accent-70: rgb(240, 201, 216, 0.7);
-  --special-accent-65: rgb(240, 201, 216, 0.65);
-  --special-accent-60: rgb(240, 201, 216, 0.6);
-  --special-btn-bg: #5c2d4a;
-  --special-btn-text: #f0c9d8;
+  {{#if special_event.enabled}}
+  --special-from: {{special_event.banner_from}};
+  --special-to: {{special_event.banner_to}};
+  --special-accent: {{special_event.banner_accent}};
+  --special-accent-30: {{rgba special_event.banner_accent 0.3}};
+  --special-accent-70: {{rgba special_event.banner_accent 0.7}};
+  --special-accent-65: {{rgba special_event.banner_accent 0.65}};
+  --special-accent-60: {{rgba special_event.banner_accent 0.6}};
+  --special-btn-bg: {{special_event.button_bg}};
+  --special-btn-text: {{special_event.button_text}};
+  {{/if}}
 }
 
 [data-theme="dark"] {
-  --cream: #1a2422;
-  --slate: #e8e0d0;
-  --forest: #9aab8a;
-  --bark: #d4b878;
-  --smoke: #243430;
-  --surface-dark: #141c1a;
-    --card-bg: #243430;
+  {{#each theme.dark}}
+  {{#if (eq @key "surface_dark")}}--surface-dark: {{this}};
+  {{else}}--{{@key}}: {{this}};
+  {{/if}}
+  {{/each}}
+  --card-bg: {{#if theme.dark.smoke}}{{theme.dark.smoke}}{{else}}{{theme.light.smoke}}{{/if}};
   --card-featured-bg: #2a3228;
   --input-border: rgb(250, 243, 228, 0.15);
-  --body-gradient-a: rgb(217, 119, 0, 0.04);
+  --body-gradient-a: {{rgba theme.light.fire 0.04}};
   --body-gradient-b: rgb(250, 243, 228, 0.03);
-  --qty-bg: #1a2422;
+  --qty-bg: {{#if theme.dark.cream}}{{theme.dark.cream}}{{else}}{{theme.light.cream}}{{/if}};
   --error-color: #e57373;
 }
 
@@ -247,7 +247,7 @@ input:focus,
 textarea:focus,
 select:focus {
   border-color: var(--fire);
-  box-shadow: 0 0 0 3px rgb(217, 119, 0, 0.15);
+  box-shadow: 0 0 0 3px {{rgba theme.light.fire 0.15}};
 }
 
 textarea {
@@ -298,7 +298,7 @@ select {
 
 .menu-card:hover {
   border-color: var(--fire);
-  box-shadow: 0 4px 20px rgb(217, 119, 0, 0.12);
+  box-shadow: 0 4px 20px {{rgba theme.light.fire 0.12}};
   transform: translateY(-2px);
 }
 
@@ -461,8 +461,8 @@ select {
 }
 
 .payment-note {
-  background: rgb(217, 119, 0, 0.08);
-  border: 1px solid rgb(217, 119, 0, 0.25);
+  background: {{rgba theme.light.fire 0.08}};
+  border: 1px solid {{rgba theme.light.fire 0.25}};
   border-radius: 10px;
   padding: 16px 20px;
   margin-top: 20px;
@@ -535,7 +535,7 @@ select {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  box-shadow: 0 4px 20px rgb(217, 119, 0, 0.35);
+  box-shadow: 0 4px 20px {{rgba theme.light.fire 0.35}};
   transition:
     transform 0.15s,
     box-shadow 0.15s;
@@ -543,7 +543,7 @@ select {
 
 .submit-btn:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgb(217, 119, 0, 0.45);
+  box-shadow: 0 8px 28px {{rgba theme.light.fire 0.45}};
 }
 
 .submit-btn:active:not(:disabled) {
@@ -734,7 +734,7 @@ footer::before {
 input.invalid,
 select.invalid {
   border-color: var(--fire) !important;
-  box-shadow: 0 0 0 3px rgb(217, 119, 0, 0.2) !important;
+  box-shadow: 0 0 0 3px {{rgba theme.light.fire 0.2}} !important;
 }
 
 @keyframes shake {
@@ -989,14 +989,14 @@ select.invalid {
 
 .special-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgb(92, 45, 74, 0.22);
+  box-shadow: 0 6px 24px {{#if special_event.enabled}}{{rgba special_event.banner_from 0.22}}{{else}}rgb(0, 0, 0, 0.12){{/if}};
   border-color: var(--special-from);
 }
 
 .special-card-featured {
   border-color: var(--fire);
   background: var(--card-featured-bg);
-  box-shadow: 0 4px 16px rgb(217, 119, 0, 0.1);
+  box-shadow: 0 4px 16px {{rgba theme.light.fire 0.1}};
 }
 
 .special-featured-tag {
