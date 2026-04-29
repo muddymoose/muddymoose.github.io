@@ -96,6 +96,16 @@ menu:
         price: 10
       - label: "1 dozen"
         price: 18
+  - id: cookies_smores
+    icon: "🍪"
+    name: "S'more Cookies"
+    description: "Whole grain soft white wheat filled with homemade biscoff cookies, marshmallows, and chocolate chips."
+    price_display: "Half dozen $10 · Dozen $18"
+    sizes:
+      - label: "Half dozen"
+        price: 10
+      - label: "1 dozen"
+        price: 18
   - id: dinner
     icon: "🫓"
     name: "Dinner Rolls"
@@ -106,7 +116,26 @@ menu:
         price: 10
       - label: "1 dozen"
         price: 18
-
+  - id: scones
+    icon: "🍓"
+    name: "Strawberries & Cream Scones"
+    description: "Tender, flaky scones made with soft white wheat. Loaded with sweet strawberries and a hint of vanilla."
+    price_display: "Three $10 · Six $18"
+    sizes:
+      - label: "Three"
+        price: 10
+      - label: "Six"
+        price: 18
+  - id: scones_tripleberry
+    icon: "🫐"
+    name: "Triple Berry Cobbler Scones"
+    description: "Rustic, golden-topped scones packed with three kinds of berries made with soft white wheat"
+    price_display: "Three $10 · Six $18"
+    sizes:
+      - label: "Three"
+        price: 10
+      - label: "Six"
+        price: 18
 # ── Seasonal/holiday special ───────────────────────────────────────────
 #   Set `enabled: false` to hide this whole section (banner + boxes +
 #   the special pickup day in the dropdown). No other changes needed.
