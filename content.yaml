@@ -96,7 +96,7 @@ menu:
         price: 10
       - label: "1 dozen"
         price: 18
-         - id: cookies2
+         - id: cookiess
     icon: "🍪"
     name: "S'more Cookies"
     description: "Whole grain soft white wheat filled with homemade biscoff cookies, marshmallows, and chocolate chips."
@@ -126,7 +126,7 @@ menu:
         price: 10
       - label: "Six"
         price: 18
-         - id: scones2
+         - id: sconess
     icon: "🫐"
     name: "Triple Berry Cobbler Scones"
     description: "Rustic, golden-topped scones packed with three kinds of berries made with soft white wheat"
