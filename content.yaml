@@ -141,46 +141,46 @@ menu:
 #   the special pickup day in the dropdown). No other changes needed.
 special_event:
   enabled: true
-  title: "Mother's Day Treat Boxes"
-  subtitle: "Whole Grain · Stone Milled · Baked to Order"
-  icon: "🌸"
-  banner_from: "#5c2d4a"                # Banner gradient start
-  banner_to: "#7a3d60"                  # Banner gradient end
-  banner_accent: "#f0c9d8"              # Banner title + label color
-  button_bg: "#5c2d4a"                  # "Add to Order" button background
-  button_text: "#f0c9d8"
-  deadline: "2026-05-05"                # Orders cut off end of this day
-  pickup_label: "Mother's Day Boxes"    # Shows in the pickup dropdown
+  title: "Fourth of July Boxes"
+  subtitle: "American's 250th Celebration"
+  icon: "🎆"
+  banner_from: "#1a2744"                # Banner gradient start
+  banner_to: "#243460"                  # Banner gradient end
+  banner_accent: "#e8c97a"             # Banner title + label color
+  button_bg: "#1a2744"                  # "Add to Order" button background
+  button_text: "#e8c97a"
+  deadline: "2026-06-27"                # Orders cut off end of this day
+  pickup_label: "Fourth of July Boxes"    # Shows in the pickup dropdown
   pickup_days:                          # One or more allowed pickup dates
-    - date: "2026-05-08"
-      label: "Friday, May 8"
-    - date: "2026-05-09"
-      label: "Saturday, May 9"
+    - date: "2026-07-03"
+      label: "Friday, July 3rd"
+    - date: "2026-07-04"
+      label: "Saturday, July 4th"
   boxes:
-    - name: "The Bloom"
+    - name: "The Firecracker"
       serves: "2–3"
       price: 28
       items:
-        - "🌀 Cinnamon Rolls ×3"
-        - "🍓 Strawberry & Cream Scones ×2"
-        - "🍪 Brown Butter Cookies ×6"
-    - name: "The Garden"
+        - "🍪 Patriotic Sugar Cookies ×3"
+        - "🫐 Triple Berry Cobbler Scones ×2"
+        - "🍫 S'more's Cookies ×6"
+    - name: "The Centennial"
       serves: "4–6"
       price: 48
       featured: true                    # Adds "Most Popular" tag
       items:
-        - "🌀 Cinnamon Rolls ×4"
-        - "🍓 Strawberry & Cream Scones ×4"
-        - "🍪 Brown Butter Cookies ×6"
-        - "🍋 Mini Lemon Loaf ×1"
-    - name: "The Spread"
+        - "🍪 Patriotic Sugar Cookies ×4"
+        - "🫐 Triple Berry Cobbler Scones ×3"
+        - "🍫 S'more's Cookies ×6"
+        - "🌀 Cinnamon Rolls ×3"
+    - name: "The Grand Finale"
       serves: "8–10"
       price: 72
       items:
-        - "🌀 Cinnamon Rolls ×6"
-        - "🍓 Strawberry & Cream Scones ×6"
-        - "🍪 Brown Butter Cookies ×12"
-        - "🍋 Mini Lemon Loaf ×1"
+        - "🍪 Patriotic Sugar Cookies ×6"
+        - "🫐 Triple Berry Cobbler Scones ×4"
+        - "🍫 S'more's Cookies ×12"
+        - "🌀 Cinnamon Rolls ×5"
 
 # ── Payment ────────────────────────────────────────────────────────────
 payment:
