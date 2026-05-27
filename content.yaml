@@ -172,7 +172,7 @@ special_event:
         - "🍪 Patriotic Sugar Cookies ×4"
         - "🫐 Triple Berry Cobbler Scones ×3"
         - "🍫 S'more's Cookies ×6"
-        - "🌀 Cinnamon Rolls ×3"
+        - "🌀 Raspberry Sweet Rolls ×3"
     - name: "The Grand Finale"
       serves: "8–10"
       price: 72
@@ -180,7 +180,7 @@ special_event:
         - "🍪 Patriotic Sugar Cookies ×6"
         - "🫐 Triple Berry Cobbler Scones ×4"
         - "🍫 S'more's Cookies ×12"
-        - "🌀 Cinnamon Rolls ×5"
+        - "🌀 Raspberry Sweet Rolls ×5"
 
 # ── Payment ────────────────────────────────────────────────────────────
 payment:
