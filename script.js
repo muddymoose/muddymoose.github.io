@@ -26,11 +26,11 @@ const WEEKS_AHEAD = 8;
 const MIN_LEAD_TIME_DAYS = 2;
 const FORMSPREE_ID = "xeerqnnq";
 const SPECIAL_EVENT = {
-  title: "Mother's Day Treat Boxes",
-  pickupLabel: "Mother's Day Boxes",
-  icon: "🌸",
-  deadline: "2026-05-05",
-  pickupDays: [{"date":"2026-05-08","label":"Friday, May 8"},{"date":"2026-05-09","label":"Saturday, May 9"}],
+  title: "Fourth of July Boxes",
+  pickupLabel: "Fourth of July Boxes",
+  icon: "🎆",
+  deadline: "2026-06-27",
+  pickupDays: [{"date":"2026-07-03","label":"Friday, July 3rd"},{"date":"2026-07-04","label":"Saturday, July 4th"}],
 };
 
 // ── Quantity tracking ───────────────────────────────────────────
