@@ -88,18 +88,18 @@ menu:
         price: 38
   - id: cookies
     icon: "🍪"
-    name: "Brown Butter Chocolate Chip Cookies"
-    description: "Whole grain soft white wheat with nutty browned butter and rich chocolate chips."
-    price_display: "Half dozen $10 · Dozen $18"
+    name: "Chocolate Chip Cookies"
+    description: "A classic 2oz made with whole grain soft white wheat and loaded with chocolate chips."
+    price_display: "Half dozen $12 · Dozen $22"
     sizes:
       - label: "Half dozen"
-        price: 10
+        price: 12
       - label: "1 dozen"
-        price: 18
+        price: 22
   - id: cookies_smores
     icon: "🍪"
     name: "S'more Cookies"
-    description: "Whole grain soft white wheat filled with homemade biscoff cookies, marshmallows, and chocolate chips."
+    description: "A whole grain 2oz delight filled with biscoff cookies, marshmallows, and chocolate chips."
     price_display: "Half dozen $10 · Dozen $18"
     sizes:
       - label: "Half dozen"
@@ -110,37 +110,37 @@ menu:
     icon: "🫓"
     name: "Dinner Rolls"
     description: "Soft, pillowy whole grain dinner rolls — perfect alongside any meal."
-    price_display: "Half dozen $10 · Dozen $18"
+    price_display: "Half dozen $8 · Dozen $16"
     sizes:
       - label: "Half dozen"
-        price: 10
+        price: 8
       - label: "1 dozen"
-        price: 18
+        price: 16
   - id: scones
     icon: "🍓"
     name: "Strawberries & Cream Scones"
     description: "Tender, flaky scones made with soft white wheat. Loaded with sweet strawberries and a hint of vanilla."
-    price_display: "Three $10 · Six $18"
+    price_display: "Three $12 · Six $22"
     sizes:
       - label: "Three"
-        price: 10
+        price: 12
       - label: "Six"
-        price: 18
+        price: 22
   - id: scones_tripleberry
     icon: "🫐"
     name: "Triple Berry Cobbler Scones"
     description: "Rustic, golden-topped scones packed with three kinds of berries made with soft white wheat"
-    price_display: "Three $10 · Six $18"
+    price_display: "Three $12 · Six $22"
     sizes:
       - label: "Three"
-        price: 10
+        price: 12
       - label: "Six"
-        price: 18
+        price: 22
 # ── Seasonal/holiday special ───────────────────────────────────────────
 #   Set `enabled: false` to hide this whole section (banner + boxes +
 #   the special pickup day in the dropdown). No other changes needed.
 special_event:
-  enabled: true
+  enabled: false
   title: "Fourth of July Boxes"
   subtitle: "American's 250th Celebration"
   icon: "🎆"
