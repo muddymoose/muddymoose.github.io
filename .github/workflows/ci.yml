@@ -5,9 +5,19 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch:
+
+# One run at a time per branch, so deploys land in push order. On main, a
+# newer push waits for the current run to finish (never cancel a Pages
+# deploy mid-flight); queued intermediate runs are superseded. On PRs, a
+# newer push cancels the stale run.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build-lint-test:
+    # Pinned: Playwright's --with-deps install breaks on newer ubuntu-latest images.
     runs-on: ubuntu-24.04
     permissions:
       contents: read
@@ -48,19 +58,21 @@ jobs:
 
       # Only what's listed here gets published.
       - name: Assemble site
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         run: |
           mkdir _site
           cp index.html styles.css script.js CNAME _site/
           cp -r assets fonts _site/
 
       - uses: actions/upload-pages-artifact@v3
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        with:
+          path: _site/
 
   deploy:
     needs: build-lint-test
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
     permissions:
       pages: write
       id-token: write
