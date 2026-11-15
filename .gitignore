@@ -3,3 +3,7 @@ test-results/
 playwright-report/
 playwright/.cache/
 .playwright-mcp/
+index.html
+styles.css
+script.js
+_site/

@@ -11,7 +11,7 @@ pnpm test              # run Playwright E2E tests (headless Chromium)
 pnpm exec serve . -l 3000  # local dev server on port 3000
 ```
 
-CI (`.github/workflows/ci.yml`) runs build → lint → tests on every push/PR to `main`. On push to `main`, it also auto-commits any regenerated `index.html` / `styles.css` / `script.js` back to the repo so GitHub Pages serves the latest output.
+CI (`.github/workflows/ci.yml`) runs build → lint → tests on every push/PR to `main`. On push to `main`, a second `deploy` job (gated on the first passing) assembles `index.html`, `styles.css`, `script.js`, `CNAME`, `assets/` and `fonts/` into `_site/` and publishes it via GitHub Actions Pages (Settings → Pages → Source must be "GitHub Actions").
 
 ## Architecture
 
@@ -21,7 +21,7 @@ Single-page static site — a bakery order form. Content is driven by **`content
 - `templates/index.html.hbs`, `templates/styles.css.hbs`, `templates/script.js.hbs` — Handlebars templates. Structure lives here; content comes from `content.yaml`.
 - `build.js` — validates `content.yaml` against `schema.js`, renders templates, writes `index.html` / `styles.css` / `script.js`, and stamps them with a content-hashed cache-bust version.
 - `schema.js` — Ajv JSON Schema for `content.yaml`. Build fails with a human-readable error if the config doesn't match.
-- `index.html`, `styles.css`, `script.js` — **generated artifacts**. Checked in because GitHub Pages serves directly from the repo, but never hand-edit — the next build overwrites them. Each file starts with an `AUTO-GENERATED` header.
+- `index.html`, `styles.css`, `script.js` — **generated artifacts**. Gitignored and not committed — CI builds and deploys them. Never hand-edit; the next build overwrites them. Run `pnpm run build` locally to produce them for dev/tests. Each file starts with an `AUTO-GENERATED` header.
 - `tests/order-form.spec.js` — Playwright E2E tests against `http://localhost:3000`. Reads `content.yaml` so it adapts when the menu changes.
 
 Payment QR codes (`venmo-qr.png`, `zelle-qr.png`) are embedded directly in the repo; their filenames are referenced from `content.yaml` under `payment`.
@@ -35,10 +35,9 @@ CSS rules must never have multiple declarations on a single line — stylelint e
 **To change site content (holiday specials, prices, menu, colors, etc.):**
 
 1. Edit `content.yaml`.
-2. Commit. The GitHub Action rebuilds the site and commits the regenerated files back.
-3. GitHub Pages picks up the new files.
+2. Commit and push to `main`. The GitHub Action builds, tests, and deploys the site to GitHub Pages.
 
-If the YAML is malformed or missing required fields, the build fails and the previous generated files stay live — the site never goes into a broken state.
+If the YAML is malformed or missing required fields, the build fails, the deploy job never runs, and the previous deployment stays live — the site never goes into a broken state.
 
 **To change site structure (form fields, layout, CSS rules):** edit the relevant `templates/*.hbs`, then run `pnpm run build` locally to verify.
 
@@ -48,4 +47,4 @@ If the YAML is malformed or missing required fields, the build fails and the pre
 
 ## Deployment
 
-The site is published as a GitHub Page from `muddymoose/muddymoose.github.io:main` at the root directory.
+The site is published to GitHub Pages from `muddymoose/muddymoose.github.io` via the `deploy` job in CI (Pages source: GitHub Actions). Only files copied into `_site/` by the "Assemble site" step are served — add new static assets there.

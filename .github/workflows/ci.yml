@@ -10,7 +10,7 @@ jobs:
   build-lint-test:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -46,15 +46,30 @@ jobs:
           name: playwright-report
           path: playwright-report/
 
-      - name: Commit regenerated files
+      # Only what's listed here gets published.
+      - name: Assemble site
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add index.html styles.css script.js
-          if git diff --staged --quiet; then
-            echo "No site changes — nothing to commit."
-          else
-            git commit -m "Rebuild site from content.yaml"
-            git push
-          fi
+          mkdir _site
+          cp index.html styles.css script.js CNAME _site/
+          cp -r assets fonts _site/
+
+      - uses: actions/upload-pages-artifact@v3
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+  deploy:
+    needs: build-lint-test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
