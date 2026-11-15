@@ -141,9 +141,9 @@ menu:
 #   the special pickup day in the dropdown). No other changes needed.
 special_event:
   enabled: false
-  title: "Fourth of July Boxes"
-  subtitle: "American's 250th Celebration"
-  icon: "🎆"
+  title: "Holiday Specials"
+  subtitle: "Holiday Expo Baked Goods"
+  icon: "❄️"
   banner_from: "#1a2744"                # Banner gradient start
   banner_to: "#243460"                  # Banner gradient end
   banner_accent: "#e8c97a"             # Banner title + label color
